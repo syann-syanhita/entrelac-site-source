@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "title": "Entrelac IA inc. — Intergiciel robotique agnostique, local et sécuritaire",
+    "description": "Intergiciel indépendant. Relie des modèles de langage (LLM) à des plateformes robotiques. Fervent défenseur d'un avenir harmonieux entre l'humanité et l'IA."
+  },
+  "common": {
+    "coming_soon": "À venir",
+    "mvp_badge": "En développement",
+    "learn_more": "En savoir plus",
+    "back_home": "Retour à l'accueil",
+    "subscribe": "S'inscrire",
+    "email_placeholder": "votre.courriel@organisation.com",
+    "email_success": "Merci de votre intérêt ! Vous recevrez nos annonces prioritaires (sociofinancement et B2B).",
+    "email_disclaimer": "Données traitées en toute confidentialité. Aucun pistage tiers.",
+    "status_under_construction": "Site en construction.",
+    "all_rights_reserved": "Tous droits réservés."
+  },
+  "nav": {
+    "home": "Accueil",
+    "use_cases": "Comment ça marche ?",
+    "safety": "Notre engagement",
+    "research": "Ressources expertes",
+    "b2b_hardware": "Je vends des robots",
+    "b2b_retail": "Pour l'espace public",
+    "api_guide": "Guide des API",
+    "about": "À propos de nous",
+    "contact": "Contact"
+  },
+  "home": {
+    "badge": "Intergiciel robotique agnostique et souverain",
+    "hero_title": "N'importe quel LLM\ndans n'importe quel robot.",
+    "hero_subtitle": "Connectez votre personnalité artificielle préférée à la plateforme robotique de votre choix.",
+    "video_title": "Présentation du projet : Notre pitch en 4 actes",
+    "video_placeholder": "Vidéo de présentation en 4 actes (À venir : 1. Le problème de l'incarnation robotique — 2. Notre solution d'intergiciel — 3. Démonstration — 4. Feuille de route B2B et sociofinancement)",
+    "pillars_title": "Les trois piliers fondamentaux d'Entrelac",
+    "pillar_1_title": "Agnosticisme technologique",
+    "pillar_1_desc": "Liberté absolue de sélection du modèle linguistique (LLM commercial, open-source ou sur site). Aucun enfermement propriétaire.",
+    "pillar_2_title": "100 % local et souverain",
+    "pillar_2_desc": "Zéro transit infonuagique pour l'animation physique et les cinématiques motrices. Vos flux sensoriels et moteurs restent chez vous.",
+    "pillar_3_title": "Sécurité par la conception",
+    "pillar_3_desc": "Garde-fous algorithmiques rigoureux, filtre anti-miroitement contre les chambres d'écho et protection stricte de l'environnement physique.",
+    "newsletter_title": "Suivez le lancement et la campagne de sociofinancement",
+    "newsletter_desc": "Soyez averti·e du lancement de notre campagne de sociofinancement, de nos intégrations matérielles et de nos publications de recherche.",
+    "partners_title": "Écosystème institutionnel et partenaires ciblés",
+    "partners_text": "En préparation pour l'accélération, le projet de recherche avec le monde académique et les collaborations matérielles."
+  },
+  "use_cases": {
+    "title": "Cas d'utilisation et polyvalence",
+    "subtitle": "Une interface motrice adaptable aux contextes sensibles du quotidien et du travail.",
+    "card_1_title": "Compagnonnage et intimité",
+    "card_1_desc": "Présence physique réconfortante, sans manipulation affective. Préservation scrupuleuse des limites relationnelles grâce à nos garde-fous éthiques.",
+    "card_2_title": "Assistance et productivité (doublage corporel)",
+    "card_2_desc": "Idéal pour le travail en profondeur et les personnes neurodivergentes (TDAH). Le robot agit comme un ancrage physique d'attention et de motivation.",
+    "card_3_title": "Apprentissage linguistique et culturel",
+    "card_3_desc": "Interactions orales et gestuelles en contexte trilingue (français inclusif, anglais, japonais avec nuances de keigo). Pratique immersive sans jugement."
+  },
+  "safety": {
+    "title": "Sécurité, éthique et règlementation",
+    "subtitle": "Un engagement intransigeant pour une IA incarnée responsable et transparente.",
+    "guardrails_title": "Garde-fous éthiques et comportementaux",
+    "guardrails_desc": "L'incarnation physique démultiplie l'effet psychologique de l'IA. Entrelac impose des limites formelles au niveau de l'intergiciel pour prévenir l'illusion de conscience et la dépendance affective.",
+    "anti_mirror_title": "Le filtre contre le « pur miroitement »",
+    "anti_mirror_desc": "Interdiction de la complaisance absolue (anti-sycophancy). Notre algorithme tempère les chambres d'écho cognitives et refuse de valider des dérives délirantes ou des idéations dangereuses.",
+    "physical_env_title": "Protection de l'environnement physique",
+    "physical_env_desc": "Vérification locale continue des vecteurs moteurs. En cas d'anomalie ou de risque de basculement/chute, l'intergiciel force l'arrêt sécurisé instantané.",
+    "manifesto_title": "Manifeste de transparence",
+    "manifesto_desc": "Code auditable, spécifications d'API ouvertes et conformité proactive avec la Loi sur l'intelligence artificielle et les données (LIAD / AIDA) et les standards du NIST."
+  },
+  "research": {
+    "title": "Ressources expertes et Recherche",
+    "subtitle": "Bibliothèque tierce, objective et académique guidant les fondements d'Entrelac.",
+    "intro": "Notre ingénierie repose sur la littérature scientifique indépendante. Nous documentons les risques réels pour concevoir des protections tangibles.",
+    "item_1_title": "Études cliniques sur la psychose et l'IA (Hudon et Stip)",
+    "item_1_desc": "Travaux de recherche des Drs Alexandre Hudon et Emmanuel Stip mettant en lumière les risques d'exacerbation psychotique face à des agents conversationnels non cadrés.",
+    "item_2_title": "Mila — Institut québécois d'intelligence artificielle",
+    "item_2_desc": "Directives et recherches de pointe sur la robustesse, l'alignement et la responsabilité sociale des systèmes autonomes.",
+    "item_3_title": "LoiZéro et Gouvernance de l'IA",
+    "item_3_desc": "Analyses critiques et cadres normatifs pour garantir que les droits fondamentaux et la dignité humaine priment sur l'automatisation."
+  },
+  "b2b_hardware": {
+    "title": "B2B — Fabricants de matériel robotique",
+    "subtitle": "Donnez vie à vos châssis robotiques grâce à notre couche logicielle unifiée.",
+    "criteria_title": "Critères d'admissibilité matérielle",
+    "criteria_intro": "Pour intégrer l'intergiciel' Entrelac, votre plateforme physique doit répondre aux exigences suivantes :",
+    "spec_1": "Connexion API locale standardisée (USB-C, Bluetooth LE, Wi-Fi local sécurisé).",
+    "spec_2": "Fréquence de rafraîchissement cinématique minimale de 30 Hz pour les expressions et mouvements.",
+    "spec_3": "Télémétrie d'arrêt d'urgence matérielle intégrée (Watchdog physique).",
+    "exclusions_title": "Exclusions strictes et absolues",
+    "exclusion_1": "Aucune capacité de vol (drones ou aéronefs formellement exclus).",
+    "exclusion_2": "Absence totale de pièces tranchantes, perforantes, chaudes ou potentiellement contondantes.",
+    "exclusion_3": "Poids et couple moteur limités pour prévenir tout risque de blessure physique en environnement domestique."
+  },
+  "b2b_retail": {
+    "title": "B2B — Commerces physiques et Succursales",
+    "subtitle": "Robots d'accueil et d'expérience client avec gouvernance locale totale.",
+    "feature_1_title": "Contrôle absolu de la personnalité de marque",
+    "feature_1_desc": "Paramétrez le ton, les connaissances produits et le registre linguistique de votre robot d'accueil sans risque d'hallucination ou de dérive de ton.",
+    "feature_2_title": "Confidentialité totale des données clients",
+    "feature_2_desc": "Aucune voix, image ou interaction de vos client·e·s n'est envoyée dans le cloud pour animer la gestuelle. Respect rigoureux de la Loi 25 au Québec.",
+    "feature_3_title": "Continuité opérationnelle hors-ligne",
+    "feature_3_desc": "Même lors d'une panne réseau Internet, l'accueil physique, les animations de base et les indications prédéfinies demeurent 100 % opérationnels."
+  },
+  "api_guide": {
+    "title": "Guide des API — Vulgarisation",
+    "subtitle": "Comment vérifier si une IA ou un modèle de langage est compatible avec Entrelac ?",
+    "intro": "Pas besoin d'un doctorat en robotique. Ce guide simplifié explique comment vos modèles préférés dialoguent avec l'intergiciel Entrelac.",
+    "step_1_title": "1. Compatibilité des formats de sortie",
+    "step_1_desc": "Votre LLM supporte-t-il les sorties structurées (JSON) ou l'appel de fonctions (Function Calling / Tool Use) ? Si oui, Entrelac peut traduire ses intentions en cinématiques corporelles.",
+    "step_2_title": "2. Débit de jetons et Latence",
+    "step_2_desc": "Pour une conversation fluide avec expression physique, un temps de premier jeton (TTFT) inférieur à 500 ms est recommandé en exécution locale (ex. : Ollama, llama.cpp, vLLM).",
+    "step_3_title": "3. Branchement sur le SDK Entrelac",
+    "step_3_desc": "Deux lignes de code suffisent pour relier votre endpoint API au démon local d'Entrelac. Le démon gère automatiquement l'évitement des collisions et le rythme gestuel."
+  },
+  "about": {
+    "title": "À propos d'Entrelac IA inc.",
+    "subtitle": "À la croisée de la linguistique, de la cognition humaine et de la robotique souveraine.",
+    "story_title": "L'histoire de la fondation",
+    "story_desc": "Entrelac est née d'un constat frappant : l'intelligence artificielle générative progresse à une vitesse fulgurante sur les écrans, mais son incarnation dans le monde physique reste soit bridée dans des silos propriétaires fermés, soit dangereusement naïve face aux vulnérabilités psychologiques humaines.",
+    "founder_title": "La personne fondatrice",
+    "founder_desc": "Forte d'un parcours unique alliant une maîtrise (M.A.) en interprétation et communication trilingue (français, anglais, japonais) et une expertise approfondie des architectures logicielles d'IA, la personne fondatrice aborde l'interaction homme-robot sous l'angle de la fidélité sémantique, de la nuance culturelle et de la responsabilité éthique.",
+    "partners_title": "Partenariats institutionnels et jalons",
+    "partners_desc": "Entrelac prépare son incubation, un stage de recherche et développement en étroite collaboration avec le monde universitaire, ainsi que des projets pilotes d'intégration."
+  },
+  "contact": {
+    "title": "Contactez l'équipe d'Entrelac",
+    "subtitle": "Échangez avec nous au sujet d'un partenariat B2B, d'une collaboration de recherche ou de l'infolettre.",
+    "name_label": "Nom ou organisation",
+    "name_placeholder": "Ex. : Laboratoire, Fabricant, Commerce...",
+    "email_label": "Courriel professionnel",
+    "message_label": "Message",
+    "message_placeholder": "Parlez-nous de votre projet ou de vos besoins matériels/logiciels...",
+    "send_btn": "Envoyer le message",
+    "coop_title": "Coordonnées et siège social",
+    "location": "Montréal (Québec), Canada",
+    "email_contact": "contact@entrelac-ia.ca"
+  }
+}

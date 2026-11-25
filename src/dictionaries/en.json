@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "title": "Entrelac AI Inc. — Agnostic, Local & Safe Robotic Middleware",
+    "description": "Agnostic middleware bridging Large Language Models (LLMs) to robotic hardware platforms via standard APIs. 100% Local, Sovereign and Safety by Design."
+  },
+  "common": {
+    "coming_soon": "Coming Soon",
+    "mvp_badge": "In development",
+    "learn_more": "Learn more",
+    "back_home": "Back to Home",
+    "subscribe": "Subscribe",
+    "email_placeholder": "your.email@organization.com",
+    "email_success": "Thank you for your interest! You will receive our priority updates (Kickstarter & B2B).",
+    "email_disclaimer": "Your data is handled with strict confidentiality. No third-party tracking.",
+    "status_under_construction": "Site under construction — Centech application, Mitacs/IntRoLab partnership, and hardware vendor negotiations in progress.",
+    "all_rights_reserved": "All rights reserved."
+  },
+  "nav": {
+    "home": "Home",
+    "use_cases": "Use Cases",
+    "safety": "Safety & Ethics",
+    "research": "Expert Research",
+    "b2b_hardware": "B2B Hardware",
+    "b2b_retail": "B2B Retail",
+    "api_guide": "API Guide",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home": {
+    "badge": "Agnostic & Sovereign Robotic Middleware",
+    "hero_title": "Give physical embodiment to AI, without compromising on data sovereignty.",
+    "hero_subtitle": "Entrelac AI bridges any LLM to interactive robotic platforms through standardized APIs. Zero cloud transit for physical motion, with rigorous ethical safety engineered from day one.",
+    "video_title": "Project Pitch: Our 4-Act Story",
+    "video_placeholder": "4-Act Video Presentation (Coming soon: 1. The challenge of physical embodiment — 2. Our middleware solution — 3. Live demo with LOOI / TangibleFuture — 4. B2B roadmap & Kickstarter launch)",
+    "pillars_title": "The Three Core Pillars of Entrelac",
+    "pillar_1_title": "Full Agnosticism",
+    "pillar_1_desc": "Total freedom of LLM choice (commercial, open-weight, or on-premise models). No vendor lock-in.",
+    "pillar_2_title": "100% Local & Sovereign",
+    "pillar_2_desc": "Zero cloud transit for physical motion generation and motor kinematics. Your sensory and motor data stay private.",
+    "pillar_3_title": "Safety by Design",
+    "pillar_3_desc": "Hard architectural guardrails, anti-sycophancy filter against toxic echo chambers, and strict physical environment containment.",
+    "newsletter_title": "Follow our Launch & Kickstarter Campaign",
+    "newsletter_desc": "Be the first to know about our upcoming Kickstarter campaign, hardware integration announcements, and research preprints.",
+    "partners_title": "Institutional Ecosystem & Key Partners",
+    "partners_text": "In preparation for incubation at Centech, Mitacs Accelerate research grant with IntRoLab (Université de Sherbrooke), and hardware pilots (TangibleFuture / LOOI)."
+  },
+  "use_cases": {
+    "title": "Use Cases & Versatility",
+    "subtitle": "An expressive motor interface crafted for sensitive daily, cognitive, and commercial contexts.",
+    "card_1_title": "Companionship & Intimacy",
+    "card_1_desc": "Comforting physical presence without emotional manipulation. Clear relational boundaries enforced by built-in ethical guardrails.",
+    "card_2_title": "Assistance & Productivity (Body Doubling)",
+    "card_2_desc": "Designed for deep focus and neurodivergent individuals (ADHD). The robot provides a tangible physical presence anchor for sustained attention.",
+    "card_3_title": "Language & Cultural Learning",
+    "card_3_desc": "Rich spoken and gestural interactions across English, French, and Japanese (hiragana & nuanced keigo registers). Judgment-free practice."
+  },
+  "safety": {
+    "title": "Safety, Ethics & Regulation",
+    "subtitle": "An uncompromising commitment to responsible and transparent embodied AI.",
+    "guardrails_title": "Ethical & Behavioral Guardrails",
+    "guardrails_desc": "Physical embodiment amplifies human emotional attachment. Entrelac introduces deterministic middleware guardrails to prevent harmful anthropomorphic illusions.",
+    "anti_mirror_title": "Anti-Sycophancy & Echo-Chamber Filter",
+    "anti_mirror_desc": "Prohibition of unhealthy complaisance. Our pipeline mitigates algorithmic radicalization, resists delusions, and halts self-reinforcing cognitive loops.",
+    "physical_env_title": "Physical Environment Protection",
+    "physical_env_desc": "Continuous local verification of motor envelopes. In case of unexpected obstacle, instability, or hazardous movement, safe emergency shutdown is triggered locally.",
+    "manifesto_title": "Transparency Manifesto",
+    "manifesto_desc": "Auditable codebase, open API schemas, and proactive alignment with Canada's Artificial Intelligence and Data Act (AIDA) and NIST AI Risk Management Framework."
+  },
+  "research": {
+    "title": "Expert Research & Scientific Foundations",
+    "subtitle": "An objective, third-party academic repository guiding Entrelac's core principles.",
+    "intro": "Our engineering is grounded in peer-reviewed science. We actively study identified psychological and robotic risks to engineer resilient safeguards.",
+    "item_1_title": "Clinical Research on AI-Induced Psychosis (Hudon & Stip)",
+    "item_1_desc": "Landmark investigations by Dr. Alexandre Hudon and Dr. Emmanuel Stip detailing risks of delusional exacerbation in vulnerable users interacting with conversational agents.",
+    "item_2_title": "Mila — Quebec Artificial Intelligence Institute",
+    "item_2_desc": "Leading research and guidelines on machine learning robustness, ethical alignment, and social accountability in autonomous agents.",
+    "item_3_title": "LoiZéro & AI Governance",
+    "item_3_desc": "Critical frameworks advocating for human primacy, non-instrumentalization, and fundamental rights in intelligent systems."
+  },
+  "b2b_hardware": {
+    "title": "B2B — Robotics Hardware Manufacturers",
+    "subtitle": "Bring your robotic platforms to life with our unified, sovereign software layer.",
+    "criteria_title": "Hardware Eligibility Criteria",
+    "criteria_intro": "To integrate with Entrelac middleware, physical robot platforms must fulfill the following technical prerequisites:",
+    "spec_1": "Standard local communication interface (USB-C, Bluetooth LE, or secured local Wi-Fi socket).",
+    "spec_2": "Kinematic update frequency of at least 30 Hz for expressive head/body motions.",
+    "spec_3": "Hardware-level watchdog and fail-safe kill switch telemetry.",
+    "exclusions_title": "Strict & Absolute Exclusions",
+    "exclusion_1": "Zero flight capability (aerial drones or flying devices strictly prohibited).",
+    "exclusion_2": "Zero sharp, hot, puncturing, or potentially hazardous moving parts.",
+    "exclusion_3": "Enforced torque and weight caps suitable for domestic and tabletop environments."
+  },
+  "b2b_retail": {
+    "title": "B2B — Retail & Physical Stores",
+    "subtitle": "In-store greeting and concierge robots with total local governance.",
+    "feature_1_title": "Total Brand Persona Governance",
+    "feature_1_desc": "Strictly dictate tone, store policies, and catalog knowledge. Zero risk of off-brand hallucinations or rogue responses.",
+    "feature_2_title": "Complete Customer Privacy",
+    "feature_2_desc": "Customer voices, faces, and physical motions never leave the local store perimeter. Full compliance with Quebec Law 25 and international privacy laws.",
+    "feature_3_title": "Resilient Offline Continuity",
+    "feature_3_desc": "In the event of an internet outage, greeting gestures, basic Q&A, and pre-programmed assistance continue without interruption."
+  },
+  "api_guide": {
+    "title": "API Guide — Simplified Overview",
+    "subtitle": "How to verify if an AI model or service is compatible with Entrelac.",
+    "intro": "No robotics degree required. Here is how your preferred LLM connects with the Entrelac engine.",
+    "step_1_title": "1. Structured Output / Tool Calling Support",
+    "step_1_desc": "Does your LLM support JSON mode or structured function calling? If yes, Entrelac can translate its reasoning into fluid physical behaviors.",
+    "step_2_title": "2. Token Throughput & Latency",
+    "step_2_desc": "For natural conversational timing, a Time-To-First-Token (TTFT) under 500ms is recommended on local runners (e.g., Ollama, llama.cpp, vLLM).",
+    "step_3_title": "3. One-line Entrelac SDK Hook",
+    "step_3_desc": "Connect your model's streaming endpoint to the Entrelac local daemon. The daemon handles kinematic smoothing, collision avoidance, and gestural pacing."
+  },
+  "about": {
+    "title": "About Entrelac AI Inc.",
+    "subtitle": "At the confluence of linguistics, human cognition, and sovereign robotics.",
+    "story_title": "The Founding Story",
+    "story_desc": "Entrelac was founded on a pivotal observation: generative AI models are advancing at breathtaking speed on screens, yet physical embodiment remains locked in closed proprietary silos or dangerously indifferent to human psychological vulnerability.",
+    "founder_title": "The Founder",
+    "founder_desc": "Holding a Master’s degree (M.A.) in trilingual interpretation and intercultural communication (French, English, Japanese) coupled with deep expertise in modern AI engineering, the founder approaches human-robot interaction through semantic fidelity, cultural nuance, and safety by design.",
+    "partners_title": "Institutional Partners & Milestones",
+    "partners_desc": "Entrelac is preparing incubation with Centech (Montreal), a Mitacs Accelerate R&D research internship with IntRoLab (Université de Sherbrooke), and hardware integration pilots with TangibleFuture (LOOI platform)."
+  },
+  "contact": {
+    "title": "Get in Touch with Entrelac",
+    "subtitle": "Reach out for B2B inquiries, research collaborations, or Kickstarter updates.",
+    "name_label": "Name or Organization",
+    "name_placeholder": "e.g., Laboratory, Manufacturer, Retailer...",
+    "email_label": "Work Email",
+    "message_label": "Message",
+    "message_placeholder": "Tell us about your hardware specs or project requirements...",
+    "send_btn": "Send Message",
+    "coop_title": "Headquarters & Contact",
+    "location": "Montreal (Quebec), Canada",
+    "email_contact": "contact@entrelac-ia.ca"
+  }
+}
