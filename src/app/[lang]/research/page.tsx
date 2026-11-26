@@ -51,7 +51,7 @@ export default async function ResearchPage({
               org: "Organisme sans but lucratif",
               description:
                 "Travaux consacrés à la sécurité de l'intelligence artificielle et à la conception de systèmes non agentiques fiables.",
-              url: "", // Collez ici l'adresse officielle vérifiée
+              url: "https://lawzero.org/fr",
             },
             {
               name: "Cadre de gestion des risques liés à l'IA (AI RMF)",
@@ -70,14 +70,21 @@ export default async function ResearchPage({
               org: "Drs Alexandre Hudon et Emmanuel Stip (Université de Montréal)",
               description:
                 "Recherches en psychiatrie portant sur l'interaction entre les personnes vulnérables et les agents conversationnels.",
-              url: "", // Collez ici le lien vers l'article ou la page universitaire de votre choix
+              url: "https://mental.jmir.org/2025/1/e85799",
             },
             {
               name: "Agents conversationnels et vulnérabilités délirantes",
               org: "Dr Søren Dinesen Østergaard (Université d'Aarhus)",
               description:
                 "Analyses publiées dans la littérature psychiatrique sur les risques de validation algorithmique d'idées délirantes.",
-              url: "", // Collez ici le lien PubMed ou universitaire de votre choix
+              url: "https://academic.oup.com/schizophreniabulletin/article/49/6/1418/7251361",
+            },
+            {
+              name: "« Delusions by design? » — Comment les IA du quotidien peuvent alimenter la psychose",
+              org: "Hamilton Morrin et coll. (prépublication PsyArXiv)",
+              description:
+                "Étude collective (Morrin, Nicholls, Levin, Yiend, Iyengar, DelGuidice, Bhattacharyya, MacCabe, Tognin et Twumasi) analysant comment les IA courantes peuvent nourrir des idées délirantes et quelles pistes d'atténuation adopter.",
+              url: "https://osf.io/preprints/psyarxiv/cmy7n_v5",
             },
             {
               name: "PubMed — Bibliothèque médicale nationale",
@@ -103,7 +110,7 @@ export default async function ResearchPage({
               org: "Initiative indépendante",
               description:
                 "Principes directeurs appelant à un développement de l'intelligence artificielle qui préserve la dignité et le contrôle humains.",
-              url: "", // Collez ici l'adresse officielle vérifiée
+              url: "https://humanstatement.org/",
             },
           ],
         },
@@ -140,7 +147,7 @@ export default async function ResearchPage({
               org: "Non-profit organization",
               description:
                 "Research dedicated to AI safety and the design of trustworthy, non-agentic systems.",
-              url: "", // Paste the verified official URL here
+              url: "https://lawzero.org/en",
             },
             {
               name: "AI Risk Management Framework (AI RMF)",
@@ -159,14 +166,21 @@ export default async function ResearchPage({
               org: "Drs. Alexandre Hudon & Emmanuel Stip (Université de Montréal)",
               description:
                 "Psychiatric research examining interactions between vulnerable individuals and conversational AI agents.",
-              url: "", // Paste the verified paper or university page URL here
+              url: "https://mental.jmir.org/2025/1/e85799",
             },
             {
               name: "Conversational Agents and Delusional Vulnerabilities",
               org: "Dr. Søren Dinesen Østergaard (Aarhus University)",
               description:
                 "Analyses published in the psychiatric literature on the risks of algorithmic validation of delusional beliefs.",
-              url: "", // Paste the verified PubMed or university URL here
+              url: "https://academic.oup.com/schizophreniabulletin/article/49/6/1418/7251361",
+            },
+            {
+              name: "Delusions by design? How everyday AIs might be fuelling psychosis (and what can be done about it)",
+              org: "Hamilton Morrin et al. (PsyArXiv preprint)",
+              description:
+                "Collaborative study (Morrin, Nicholls, Levin, Yiend, Iyengar, DelGuidice, Bhattacharyya, MacCabe, Tognin, and Twumasi) examining how everyday AIs may fuel delusional beliefs and what mitigation measures can be taken.",
+              url: "https://osf.io/preprints/psyarxiv/cmy7n_v5",
             },
             {
               name: "PubMed — National Library of Medicine",
@@ -185,14 +199,14 @@ export default async function ResearchPage({
               org: "Academic and civic initiative",
               description:
                 "Collective ethical framework setting out principles for well-being, respect for autonomy, and privacy protection.",
-              url: "https://declarationmontreal-iaresponsable.com/",
+              url: "https://montrealdeclaration-responsibleai.com/",
             },
             {
               name: "Pro-Human AI Declaration",
               org: "Independent initiative",
               description:
                 "Guiding principles calling for AI development that preserves human dignity and control.",
-              url: "", // Paste the verified official URL here
+              url: "https://humanstatement.org/",
             },
           ],
         },
@@ -229,7 +243,7 @@ export default async function ResearchPage({
               org: "非営利団体",
               description:
                 "AIの安全性研究と、信頼できる非自律型システムの設計に取り組んでいます。",
-              url: "", // 確認済みの公式URLをここに入力してください
+              url: "https://lawzero.org/en",
             },
             {
               name: "AIリスク管理フレームワーク（AI RMF）",
@@ -248,14 +262,21 @@ export default async function ResearchPage({
               org: "アレクサンドル・ユドン博士・エマニュエル・スティップ博士（モントリオール大学）",
               description:
                 "脆弱性を抱える人々と対話型AIエージェントの相互作用を検証する精神医学分野の研究です。",
-              url: "", // 確認済みの論文または大学ページのURLをここに入力してください
+              url: "https://mental.jmir.org/2025/1/e85799",
             },
             {
               name: "対話型エージェントと妄想的脆弱性",
               org: "ソーレン・ディネセン・オースターガード博士（オーフス大学）",
               description:
                 "アルゴリズムによる妄想的思考への同調がもたらすリスクを論じた、精神医学文献における分析です。",
-              url: "", // 確認済みのPubMedまたは大学ページのURLをここに入力してください
+              url: "https://academic.oup.com/schizophreniabulletin/article/49/6/1418/7251361",
+            },
+            {
+              name: "日常的なAIはいかにして精神病症状を助長し得るか（Delusions by design?）",
+              org: "ハミルトン・モリンほか（PsyArXiv プレプリント）",
+              description:
+                "日常的なAIが妄想的思考をどのように助長し得るかを分析し、その対策を検討した10名の研究者による共同研究です。",
+              url: "https://osf.io/preprints/psyarxiv/cmy7n_v5",
             },
             {
               name: "PubMed（米国国立医学図書館）",
@@ -274,14 +295,14 @@ export default async function ResearchPage({
               org: "学術・市民共同イニシアチブ",
               description:
                 "人間の幸福、自律性の尊重、プライバシー保護を柱とする共同の倫理指針です。",
-              url: "https://declarationmontreal-iaresponsable.com/",
+              url: "https://montrealdeclaration-responsibleai.com/",
             },
             {
               name: "人間中心のAI宣言（Pro-Human AI Declaration）",
               org: "独立した取り組み",
               description:
                 "人間の尊厳と制御を守る人工知能の開発を求める指針です。",
-              url: "", // 確認済みの公式URLをここに入力してください
+              url: "https://humanstatement.org/",
             },
           ],
         },
