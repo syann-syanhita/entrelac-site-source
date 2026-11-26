@@ -72,8 +72,9 @@ function ContactFormContent({ params }: ContactPageProps) {
         "L'incarnation physique de l'intelligence artificielle soulève des questions techniques, sociales et humaines essentielles. Cet espace s'adresse autant au grand public qu'à la communauté scientifique : n'hésitez pas à nous faire part de vos préoccupations, à suggérer un modèle de robot ou à nous transmettre des travaux de recherche qui méritent notre attention.",
       privacy_note:
         "Vos coordonnées servent uniquement à vous répondre ou à vous aviser du lancement et ne sont jamais partagées avec des tiers.",
-      location_title: "Ancrage",
-      location: "Région de Montréal (Québec), Canada",
+      address:
+        "204, rue du Saint-Sacrement, bureau 300\nMontréal (Québec) H2Y 1W8\nCanada",
+      address_note: "Adresse postale seulement (aucun accueil sur place).",
     },
     en: {
       badge: "Contact & Sharing",
@@ -114,8 +115,9 @@ function ContactFormContent({ params }: ContactPageProps) {
         "Giving artificial intelligence a physical form raises vital technical, social, and human questions. This space is for both curious newcomers and the scientific community: feel free to share your concerns, suggest a robot model, or send us research papers that deserve our attention.",
       privacy_note:
         "Your contact details are used solely to reply to you or send the launch alert and are never shared with third parties.",
-      location_title: "Location",
-      location: "Greater Montreal (Quebec), Canada",
+      address:
+        "204 rue du Saint-Sacrement, Suite 300\nMontreal, QC H2Y 1W8\nCanada",
+      address_note: "Mailing address only (no walk-in reception).",
     },
     ja: {
       badge: "お問い合わせ・共有",
@@ -155,8 +157,9 @@ function ContactFormContent({ params }: ContactPageProps) {
         "人工知能が物理的な身体を持つことは、技術面だけでなく社会や人間に関わる重要な問いを投げかけます。このスペースは、専門知識のない一般の方々から研究者の皆さままで広く開かれています。ご懸念の共有、ロボット機種のご提案、私たちが注目すべき研究論文のご紹介など、どうぞお気軽にお寄せください。",
       privacy_note:
         "いただいたご連絡先は返信または開始通知の送信のみに使用し、第三者へ提供することは一切ございません。",
-      location_title: "拠点",
-      location: "カナダ・ケベック州モントリオール圏",
+      address:
+        "204 rue du Saint-Sacrement, Suite 300\nMontréal, QC H2Y 1W8, Canada",
+      address_note: "※郵便受取専用住所（来訪・窓口対応は行っておりません）",
     },
   }[params.lang];
 
@@ -359,10 +362,15 @@ function ContactFormContent({ params }: ContactPageProps) {
 
           <div className="pt-6 border-t border-slate-800 space-y-3 text-xs text-slate-400">
             <p className="whitespace-pre-line">{content.privacy_note}</p>
-            <div className="pt-2">
+            <address className="not-italic pt-2 space-y-1">
               <p className="font-semibold text-white">Entrelac IA inc.</p>
-              <p className="whitespace-pre-line">{content.location}</p>
-            </div>
+              <p className="whitespace-pre-line leading-relaxed text-slate-300">
+                {content.address}
+              </p>
+              <p className="pt-1 text-[11px] text-slate-500">
+                {content.address_note}
+              </p>
+            </address>
           </div>
         </div>
       </div>
