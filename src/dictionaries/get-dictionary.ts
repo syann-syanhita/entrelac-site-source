@@ -1,5 +1,6 @@
 import "server-only";
 import type { Locale } from "@/i18n";
+import { notFound } from "next/navigation";
 
 const dictionaries = {
   fr: () => import("./fr.json").then((module) => module.default),
@@ -8,10 +9,10 @@ const dictionaries = {
 };
 
 export const getDictionary = async (locale: Locale) => {
-  if (dictionaries[locale]) {
+  if (locale === "fr" || locale === "en" || locale === "ja") {
     return dictionaries[locale]();
   }
-  return dictionaries.fr();
+  notFound();
 };
 
 export type Dictionary = Awaited<ReturnType<typeof getDictionary>>;
