@@ -42,6 +42,26 @@ const CONFIRMATION_COPY = {
       "Confirmez votre inscription — Alerte sociofinancement (Entrelac IA inc.)",
     crowdfundingBody: (confirmUrl: string) =>
       `Bonjour,\n\nPour finaliser votre inscription à l'alerte de lancement de notre campagne de sociofinancement, cliquez sur le lien ci-dessous (valable pendant 48 heures) :\n\n${confirmUrl}\n\nVous pourrez retirer votre consentement en tout temps en nous écrivant à info@entrelac-ia.ca. Si vous n'êtes pas à l'origine de cette demande, ignorez simplement ce courriel : aucune inscription ne sera enregistrée.\n\nL'équipe d'Entrelac IA inc.\n204, rue du Saint-Sacrement, bureau 300, Montréal (Québec) H2Y 1W8, Canada\nhttps://www.entrelac-ia.ca`,
+    crowdfundingHtml: (confirmUrl: string) => `
+      <div style="font-family: Arial, sans-serif; color: #1e293b; line-height: 1.6; max-width: 560px;">
+        <p>Bonjour,</p>
+        <p>Pour finaliser votre inscription à l'alerte de lancement de notre campagne de sociofinancement, cliquez sur le bouton ci-dessous (lien valable pendant 48 heures)&nbsp;:</p>
+        <p style="margin: 24px 0;">
+          <a href="${confirmUrl}" style="background-color: #0284c7; color: #ffffff; padding: 12px 22px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
+            Confirmer mon inscription
+          </a>
+        </p>
+        <p style="font-size: 13px; color: #475569;">Si le bouton ne fonctionne pas, copiez-collez ce lien dans votre navigateur&nbsp;:<br />
+          <a href="${confirmUrl}" style="color: #0284c7; word-break: break-all;">${confirmUrl}</a>
+        </p>
+        <p style="font-size: 13px; color: #475569;">Vous pourrez retirer votre consentement en tout temps en nous écrivant à info@entrelac-ia.ca. Si vous n'êtes pas à l'origine de cette demande, ignorez simplement ce courriel : aucune inscription ne sera enregistrée.</p>
+        <p style="font-size: 12px; color: #64748b; margin-top: 24px;">
+          L'équipe d'Entrelac IA inc.<br />
+          204, rue du Saint-Sacrement, bureau 300, Montréal (Québec) H2Y 1W8, Canada<br />
+          <a href="https://www.entrelac-ia.ca" style="color: #0284c7;">https://www.entrelac-ia.ca</a>
+        </p>
+      </div>
+    `,
   },
   en: {
     subject: "Message received — Entrelac IA inc.",
@@ -50,6 +70,26 @@ const CONFIRMATION_COPY = {
       "Confirm your sign-up — Crowdfunding Launch Alert (Entrelac IA inc.)",
     crowdfundingBody: (confirmUrl: string) =>
       `Hello,\n\nTo complete your sign-up for our crowdfunding launch alert, please click the link below (valid for 48 hours):\n\n${confirmUrl}\n\nYou may withdraw your consent at any time by writing to info@entrelac-ia.ca. If you did not make this request, simply ignore this email and no sign-up will be recorded.\n\nThe Entrelac IA inc. Team\n204 rue du Saint-Sacrement, Suite 300, Montreal, QC H2Y 1W8, Canada\nhttps://www.entrelac-ia.ca`,
+    crowdfundingHtml: (confirmUrl: string) => `
+      <div style="font-family: Arial, sans-serif; color: #1e293b; line-height: 1.6; max-width: 560px;">
+        <p>Hello,</p>
+        <p>To complete your sign-up for our crowdfunding launch alert, please click the button below (valid for 48 hours):</p>
+        <p style="margin: 24px 0;">
+          <a href="${confirmUrl}" style="background-color: #0284c7; color: #ffffff; padding: 12px 22px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
+            Confirm my sign-up
+          </a>
+        </p>
+        <p style="font-size: 13px; color: #475569;">If the button does not work, copy and paste this link into your browser:<br />
+          <a href="${confirmUrl}" style="color: #0284c7; word-break: break-all;">${confirmUrl}</a>
+        </p>
+        <p style="font-size: 13px; color: #475569;">You may withdraw your consent at any time by writing to info@entrelac-ia.ca. If you did not make this request, simply ignore this email and no sign-up will be recorded.</p>
+        <p style="font-size: 12px; color: #64748b; margin-top: 24px;">
+          The Entrelac IA inc. Team<br />
+          204 rue du Saint-Sacrement, Suite 300, Montreal, QC H2Y 1W8, Canada<br />
+          <a href="https://www.entrelac-ia.ca" style="color: #0284c7;">https://www.entrelac-ia.ca</a>
+        </p>
+      </div>
+    `,
   },
   ja: {
     subject: "お問い合わせ受付のお知らせ — アントラック（Entrelac IA inc.）",
@@ -58,6 +98,26 @@ const CONFIRMATION_COPY = {
       "登録確認のお願い — クラウドファンディング開始通知（Entrelac IA inc.）",
     crowdfundingBody: (confirmUrl: string) =>
       `ご登録のお申し込みありがとうございます。\n\nクラウドファンディング開始通知への登録を完了するには、以下のリンクをクリックしてください（有効期限：48時間）：\n\n${confirmUrl}\n\n同意はいつでも info@entrelac-ia.ca へのご連絡により撤回いただけます。お心当たりのない場合は、このメールを破棄してください（リンクをクリックしない限り登録は完了しません）。\n\nアントラック（Entrelac IA inc.）\n204 rue du Saint-Sacrement, Suite 300, Montréal, QC H2Y 1W8, Canada\nhttps://www.entrelac-ia.ca`,
+    crowdfundingHtml: (confirmUrl: string) => `
+      <div style="font-family: Arial, sans-serif; color: #1e293b; line-height: 1.6; max-width: 560px;">
+        <p>ご登録のお申し込みありがとうございます。</p>
+        <p>クラウドファンディング開始通知への登録を完了するには、以下のボタンをクリックしてください（有効期限：48時間）：</p>
+        <p style="margin: 24px 0;">
+          <a href="${confirmUrl}" style="background-color: #0284c7; color: #ffffff; padding: 12px 22px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
+            登録を完了する
+          </a>
+        </p>
+        <p style="font-size: 13px; color: #475569;">ボタンが機能しない場合は、以下のURLをブラウザに貼り付けてください：<br />
+          <a href="${confirmUrl}" style="color: #0284c7; word-break: break-all;">${confirmUrl}</a>
+        </p>
+        <p style="font-size: 13px; color: #475569;">同意はいつでも info@entrelac-ia.ca へのご連絡により撤回いただけます。お心当たりのない場合は、このメールを破棄してください（リンクをクリックしない限り登録は完了しません）。</p>
+        <p style="font-size: 12px; color: #64748b; margin-top: 24px;">
+          アントラック（Entrelac IA inc.）<br />
+          204 rue du Saint-Sacrement, Suite 300, Montréal, QC H2Y 1W8, Canada<br />
+          <a href="https://www.entrelac-ia.ca" style="color: #0284c7;">https://www.entrelac-ia.ca</a>
+        </p>
+      </div>
+    `,
   },
 };
 
@@ -179,12 +239,13 @@ export async function POST(request: Request) {
         token
       )}`;
 
-      // Double confirmation : on n'avise info@entrelac-ia.ca qu'après le clic
+      // Double confirmation : envoi HTML (bouton bleu cliquable) + texte brut
       await transporter.sendMail({
         from: `"Entrelac IA inc." <info@entrelac-ia.ca>`,
         to: cleanEmail,
         subject: copy.crowdfundingSubject,
         text: copy.crowdfundingBody(confirmUrl),
+        html: copy.crowdfundingHtml(confirmUrl),
       });
     } else {
       // 1. Envoi interne vers votre alias
