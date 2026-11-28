@@ -10,6 +10,7 @@ interface ContactPageProps {
 
 function ContactFormContent({ params }: ContactPageProps) {
   const searchParams = useSearchParams();
+  const confirmStatus = searchParams.get("statut");
   const initialTopic =
     searchParams.get("motif") === "sociofinancement"
       ? "sociofinancement"
@@ -20,6 +21,7 @@ function ContactFormContent({ params }: ContactPageProps) {
   const [topic, setTopic] = useState(initialTopic);
   const [message, setMessage] = useState("");
   const [website, setWebsite] = useState(""); // Champ piège invisible
+  const [formLoadedAt] = useState(() => Date.now());
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -48,25 +50,31 @@ function ContactFormContent({ params }: ContactPageProps) {
         partenariats: "Je représente une entreprise ou un organisme.",
       },
       crowdfunding_info:
-        "Le projet est actuellement en développement, mais nous lancerons bientôt un premier robot propulsé par Entrelac. Vous avez hâte d'offrir un corps à votre IA préférée ? Inscrivez-vous ici, et nous vous préviendrons dès que le projet sera ouvert au grand public !",
+        "Le projet est actuellement en développement, mais nous lancerons bientôt un premier robot propulsé par Entrelac. Vous avez hâte d'offrir un corps à votre IA préférée ? Inscrivez-vous ici, et Entrelac IA inc. vous préviendra dès que le projet sera ouvert au grand public ! Vous pourrez retirer votre consentement en tout temps.",
       name_label: "Votre nom et organisation",
       name_placeholder: "Exemple : Tatsuya Migneault (PDG) Entrelac IA inc.",
       email_label: "Votre adresse courriel",
-      email_placeholder: "Vous recevrez une copie de votre message.",
+      email_placeholder: "Vous recevrez un accusé de réception.",
       crowdfunding_email_placeholder: "votre.adresse@exemple.com",
       message_label: "Message",
       message_optional_label: "Message (facultatif)",
       message_placeholder: "Dites-nous ce qui vous amène.",
       crowdfunding_message_placeholder:
-        "Si vous le souhaitez, laissez-nous un mot ou suggérez un modèle de robot que vous aimeriez voir compatible.",
+        "Si vous le souhaitez, laissez-nous un mot ou suggérez un modèle de robot que vous aimeriez voir compatible (max. 300 caractères).",
       send_btn: "Envoyer le message",
       crowdfunding_send_btn: "M'inscrire à l'alerte",
       success:
-        "Merci pour votre message ! Vous recevrez bientôt une copie à votre propre adresse courriel.",
+        "Merci pour votre message ! Vous recevrez bientôt un accusé de réception par courriel.",
       crowdfunding_success:
-        "Merci pour votre inscription ! Vous recevrez une confirmation par courriel et nous vous préviendrons dès le lancement officiel du sociofinancement.",
+        "Presque terminé ! Vérifiez votre boîte de réception (et vos courriels indésirables au besoin) et cliquez sur le lien de confirmation dans les 48 prochaines heures pour finaliser votre inscription.",
+      confirmed_banner:
+        "Votre inscription à l'alerte de sociofinancement est maintenant confirmée ! Nous vous préviendrons dès le lancement officiel.",
+      expired_banner:
+        "Ce lien de confirmation a expiré (valable 48 heures). Vous pouvez soumettre votre adresse courriel de nouveau ci-dessous.",
+      invalid_banner:
+        "Ce lien de confirmation est invalide. Vous pouvez soumettre votre adresse courriel de nouveau ci-dessous.",
       error_msg:
-        "Une erreur est survenue lors de l'envoi. Réessayez dans quelques instants.",
+        "Une erreur est survenue lors de l'envoi. Attendez quelques secondes et réessayez.",
       share_title: "Espace « Partage »",
       share_desc:
         "L'incarnation physique de l'intelligence artificielle soulève des questions techniques, sociales et humaines essentielles. Cet espace s'adresse autant au grand public qu'à la communauté scientifique : n'hésitez pas à nous faire part de vos préoccupations, à suggérer un modèle de robot ou à nous transmettre des travaux de recherche qui méritent notre attention.",
@@ -91,25 +99,31 @@ function ContactFormContent({ params }: ContactPageProps) {
         partenariats: "I represent a business or an organization.",
       },
       crowdfunding_info:
-        "The project is currently in development, and we will soon launch a first Entrelac-powered robot. Eager to give your favourite AI a physical body? Sign up here, and we will notify you as soon as the project opens to the public!",
+        "The project is currently in development, and we will soon launch a first Entrelac-powered robot. Eager to give your favourite AI a physical body? Sign up here, and Entrelac IA inc. will notify you as soon as the project opens to the public! You may withdraw your consent at any time.",
       name_label: "Your name and organization",
       name_placeholder: "Example: Tatsuya Migneault (CEO) Entrelac IA inc.",
       email_label: "Your email address",
-      email_placeholder: "You will receive a copy of your message.",
+      email_placeholder: "You will receive a confirmation email.",
       crowdfunding_email_placeholder: "your.email@example.com",
       message_label: "Message",
       message_optional_label: "Message (optional)",
       message_placeholder: "Tell us what brings you here.",
       crowdfunding_message_placeholder:
-        "If you wish, leave us a note or suggest a robot model you would like to see supported.",
+        "If you wish, leave us a note or suggest a robot model you would like to see supported (max. 300 characters).",
       send_btn: "Send message",
       crowdfunding_send_btn: "Sign up for the alert",
       success:
-        "Thank you for your message! You will soon receive a copy at your email address.",
+        "Thank you for your message! You will soon receive a confirmation email.",
       crowdfunding_success:
-        "Thank you for signing up! You will receive a confirmation email, and we will notify you as soon as the crowdfunding campaign officially launches.",
+        "Almost done! Please check your inbox (and spam folder if needed) and click the confirmation link within 48 hours to complete your sign-up.",
+      confirmed_banner:
+        "Your sign-up for the crowdfunding launch alert is now confirmed! We will notify you as soon as the campaign officially launches.",
+      expired_banner:
+        "This confirmation link has expired (valid for 48 hours). Please submit your email address again below.",
+      invalid_banner:
+        "This confirmation link is invalid. Please submit your email address again below.",
       error_msg:
-        "An error occurred while sending your message. Please try again shortly.",
+        "An error occurred while sending your message. Please wait a few seconds and try again.",
       share_title: "“Sharing” Space",
       share_desc:
         "Giving artificial intelligence a physical form raises vital technical, social, and human questions. This space is for both curious newcomers and the scientific community: feel free to share your concerns, suggest a robot model, or send us research papers that deserve our attention.",
@@ -133,25 +147,31 @@ function ContactFormContent({ params }: ContactPageProps) {
         partenariats: "企業または団体の担当者です。",
       },
       crowdfunding_info:
-        "本プロジェクトは現在開発中ですが、まもなくアントラック搭載の第1号ロボットを公開する予定です。お気に入りのAIに身体を贈る日を楽しみにされていますか？ こちらにご登録いただければ、一般公開が始まり次第お知らせいたします！",
+        "本プロジェクトは現在開発中ですが、まもなくアントラック搭載の第1号ロボットを公開する予定です。お気に入りのAIに身体を贈る日を楽しみにされていますか？ こちらにご登録いただければ、一般公開が始まり次第 Entrelac IA inc. よりお知らせいたします。同意はいつでも撤回できます。",
       name_label: "お名前とご所属",
       name_placeholder: "例：Tatsuya Migneault（代表）Entrelac IA inc.",
       email_label: "メールアドレス",
-      email_placeholder: "ご入力のアドレス宛に送信内容の控えが届きます。",
+      email_placeholder: "受付確認メールが届きます。",
       crowdfunding_email_placeholder: "example@domain.com",
       message_label: "メッセージ",
       message_optional_label: "メッセージ（任意）",
       message_placeholder: "ご用件をお聞かせください。",
       crowdfunding_message_placeholder:
-        "よろしければ一言お寄せいただくか、対応してほしいロボット機種をご提案ください。",
+        "よろしければ一言お寄せいただくか、対応してほしいロボット機種をご提案ください（最大300文字）。",
       send_btn: "メッセージを送信する",
       crowdfunding_send_btn: "開始通知に登録する",
       success:
-        "お問い合わせありがとうございます。まもなくご入力いただいたメールアドレス宛に控えが届きます。",
+        "お問い合わせありがとうございます。まもなくご入力いただいたメールアドレス宛に受付確認メールが届きます。",
       crowdfunding_success:
-        "ご登録ありがとうございます。確認メールをお送りいたしますのでご確認ください。クラウドファンディングの正式開始時に改めてお知らせいたします。",
+        "あと少しで完了です！ 受信トレイ（必要に応じて迷惑メールフォルダ）をご確認のうえ、48時間以内に確認リンクをクリックして登録を完了してください。",
+      confirmed_banner:
+        "クラウドファンディング開始通知へのご登録が正式に完了いたしました！ 一般公開が始まり次第お知らせいたします。",
+      expired_banner:
+        "確認リンクの有効期限（48時間）が切れています。お手数ですが、下のフォームから再度ご登録ください。",
+      invalid_banner:
+        "確認リンクが無効です。お手数ですが、下のフォームから再度ご登録ください。",
       error_msg:
-        "送信中にエラーが発生しました。しばらく経ってからもう一度お試しください。",
+        "送信中にエラーが発生しました。数秒待ってからもう一度お試しください。",
       share_title: "「共有」スペース",
       share_desc:
         "人工知能が物理的な身体を持つことは、技術面だけでなく社会や人間に関わる重要な問いを投げかけます。このスペースは、専門知識のない一般の方々から研究者の皆さままで広く開かれています。ご懸念の共有、ロボット機種のご提案、私たちが注目すべき研究論文のご紹介など、どうぞお気軽にお寄せください。",
@@ -179,6 +199,7 @@ function ContactFormContent({ params }: ContactPageProps) {
           message,
           lang: params.lang,
           website,
+          formLoadedAt,
         }),
       });
 
@@ -211,7 +232,36 @@ function ContactFormContent({ params }: ContactPageProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Form */}
-        <div className="md:col-span-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-6 sm:p-8">
+        <div className="md:col-span-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-6 sm:p-8 space-y-6">
+          {confirmStatus === "confirme" && (
+            <div className="p-6 rounded-xl bg-emerald-950/60 border border-emerald-800 text-emerald-200 text-sm flex items-center gap-3">
+              <svg
+                className="w-6 h-6 text-emerald-400 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+              <p className="whitespace-pre-line">{content.confirmed_banner}</p>
+            </div>
+          )}
+
+          {(confirmStatus === "expire" || confirmStatus === "invalide") && (
+            <div className="p-4 rounded-xl bg-amber-950/60 border border-amber-800 text-amber-200 text-sm">
+              <p className="whitespace-pre-line">
+                {confirmStatus === "expire"
+                  ? content.expired_banner
+                  : content.invalid_banner}
+              </p>
+            </div>
+          )}
+
           {submitted ? (
             <div className="p-6 rounded-xl bg-emerald-950/60 border border-emerald-800 text-emerald-200 text-sm flex items-center gap-3">
               <svg
@@ -232,120 +282,125 @@ function ContactFormContent({ params }: ContactPageProps) {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Champ piège anti-pourriel invisible pour les humains */}
-              <div className="hidden" aria-hidden="true">
-                <label htmlFor="website">Site Web</label>
-                <input
-                  id="website"
-                  type="text"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  value={website}
-                  onChange={(e) => setWebsite(e.target.value)}
-                />
-              </div>
+            confirmStatus !== "confirme" && (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Champ piège anti-pourriel invisible pour les humains */}
+                <div className="hidden" aria-hidden="true">
+                  <label htmlFor="website">Site Web</label>
+                  <input
+                    id="website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={website}
+                    onChange={(e) => setWebsite(e.target.value)}
+                  />
+                </div>
 
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                  {content.topic_label}
-                </label>
-                <select
-                  value={topic}
-                  onChange={(e) => setTopic(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-lg bg-slate-950 border border-slate-700 text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm transition"
-                >
-                  <option value="partage">{content.topics.partage}</option>
-                  <option value="sociofinancement">
-                    {content.topics.sociofinancement}
-                  </option>
-                  <option value="medias">{content.topics.medias}</option>
-                  <option value="partenariats">
-                    {content.topics.partenariats}
-                  </option>
-                </select>
-
-                {isCrowdfunding && (
-                  <p className="mt-3 rounded-lg border border-sky-800/70 bg-sky-950/50 px-4 py-3 text-sm text-sky-200 leading-relaxed whitespace-pre-line">
-                    {content.crowdfunding_info}
-                  </p>
-                )}
-              </div>
-
-              {!isCrowdfunding && (
                 <div>
                   <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                    {content.name_label}
+                    {content.topic_label}
+                  </label>
+                  <select
+                    value={topic}
+                    onChange={(e) => setTopic(e.target.value)}
+                    className="w-full px-4 py-2.5 rounded-lg bg-slate-950 border border-slate-700 text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm transition"
+                  >
+                    <option value="partage">{content.topics.partage}</option>
+                    <option value="sociofinancement">
+                      {content.topics.sociofinancement}
+                    </option>
+                    <option value="medias">{content.topics.medias}</option>
+                    <option value="partenariats">
+                      {content.topics.partenariats}
+                    </option>
+                  </select>
+
+                  {isCrowdfunding && (
+                    <p className="mt-3 rounded-lg border border-sky-800/70 bg-sky-950/50 px-4 py-3 text-sm text-sky-200 leading-relaxed whitespace-pre-line">
+                      {content.crowdfunding_info}
+                    </p>
+                  )}
+                </div>
+
+                {!isCrowdfunding && (
+                  <div>
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
+                      {content.name_label}
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      maxLength={50}
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder={content.name_placeholder}
+                      className="w-full px-4 py-2.5 rounded-lg bg-slate-950 border border-slate-700 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm transition"
+                    />
+                  </div>
+                )}
+
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
+                    {content.email_label}
                   </label>
                   <input
-                    type="text"
+                    type="email"
                     required
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder={content.name_placeholder}
+                    maxLength={50}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder={
+                      isCrowdfunding
+                        ? content.crowdfunding_email_placeholder
+                        : content.email_placeholder
+                    }
                     className="w-full px-4 py-2.5 rounded-lg bg-slate-950 border border-slate-700 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm transition"
                   />
                 </div>
-              )}
 
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                  {content.email_label}
-                </label>
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder={
-                    isCrowdfunding
-                      ? content.crowdfunding_email_placeholder
-                      : content.email_placeholder
-                  }
-                  className="w-full px-4 py-2.5 rounded-lg bg-slate-950 border border-slate-700 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm transition"
-                />
-              </div>
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
+                    {isCrowdfunding
+                      ? content.message_optional_label
+                      : content.message_label}
+                  </label>
+                  <textarea
+                    required={!isCrowdfunding}
+                    maxLength={isCrowdfunding ? 300 : 3000}
+                    rows={isCrowdfunding ? 3 : 5}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder={
+                      isCrowdfunding
+                        ? content.crowdfunding_message_placeholder
+                        : content.message_placeholder
+                    }
+                    className="w-full px-4 py-2.5 rounded-lg bg-slate-950 border border-slate-700 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm transition"
+                  />
+                </div>
 
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
-                  {isCrowdfunding
-                    ? content.message_optional_label
-                    : content.message_label}
-                </label>
-                <textarea
-                  required={!isCrowdfunding}
-                  rows={isCrowdfunding ? 3 : 5}
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  placeholder={
-                    isCrowdfunding
-                      ? content.crowdfunding_message_placeholder
-                      : content.message_placeholder
-                  }
-                  className="w-full px-4 py-2.5 rounded-lg bg-slate-950 border border-slate-700 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm transition"
-                />
-              </div>
-
-              {error && (
-                <p className="text-sm text-red-400 bg-red-950/40 border border-red-800/60 rounded-lg px-4 py-3 whitespace-pre-line">
-                  {error}
-                </p>
-              )}
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full sm:w-auto px-6 py-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-medium text-sm transition shadow-lg shadow-sky-950 disabled:opacity-50 flex items-center justify-center gap-2"
-              >
-                {loading ? (
-                  <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
-                ) : isCrowdfunding ? (
-                  content.crowdfunding_send_btn
-                ) : (
-                  content.send_btn
+                {error && (
+                  <p className="text-sm text-red-400 bg-red-950/40 border border-red-800/60 rounded-lg px-4 py-3 whitespace-pre-line">
+                    {error}
+                  </p>
                 )}
-              </button>
-            </form>
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full sm:w-auto px-6 py-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-medium text-sm transition shadow-lg shadow-sky-950 disabled:opacity-50 flex items-center justify-center gap-2"
+                >
+                  {loading ? (
+                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                  ) : isCrowdfunding ? (
+                    content.crowdfunding_send_btn
+                  ) : (
+                    content.send_btn
+                  )}
+                </button>
+              </form>
+            )
           )}
         </div>
 

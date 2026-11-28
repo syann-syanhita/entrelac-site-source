@@ -1,5 +1,19 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { createConfirmToken } from "@/lib/confirmToken";
+
+const MAX_NAME_LENGTH = 50;
+const MAX_EMAIL_LENGTH = 50;
+const MAX_MESSAGE_LENGTH = 3000;
+const MAX_CROWDFUNDING_MESSAGE_LENGTH = 300;
+const MIN_SUBMIT_TIME_MS = 5000;
+
+const ALLOWED_ORIGINS = new Set([
+  "https://www.entrelac-ia.ca",
+  "https://entrelac-ia.ca",
+]);
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const RECIPIENT_MAP: Record<string, { email: string; label: string }> = {
   partage: {
@@ -22,70 +36,96 @@ const RECIPIENT_MAP: Record<string, { email: string; label: string }> = {
 
 const CONFIRMATION_COPY = {
   fr: {
-    subject: "Copie de votre message — Entrelac IA inc.",
-    intro: (name: string) =>
-      `Bonjour ${name},\n\nNous avons bien reçu votre message et nous vous remercions d'avoir pris le temps de nous écrire. Voici une copie de votre envoi :`,
-    outro:
-      "Nous vous répondrons dans les meilleurs délais.\n\nL'équipe d'Entrelac IA inc.",
+    subject: "Accusé de réception — Entrelac IA inc.",
+    body: "Bonjour,\n\nNous avons bien reçu votre message et nous vous remercions d'avoir pris le temps de nous écrire. Nous vous répondrons dans les meilleurs délais.\n\nL'équipe d'Entrelac IA inc.\n204, rue du Saint-Sacrement, bureau 300, Montréal (Québec) H2Y 1W8, Canada",
     crowdfundingSubject:
-      "Inscription confirmée — Alerte sociofinancement (Entrelac IA inc.)",
-    crowdfundingBody: (optionalMessage: string) =>
-      `Bonjour,\n\nVotre inscription à l'alerte de lancement de notre campagne de sociofinancement est bien confirmée. Nous vous écrirons dès que le projet sera ouvert au grand public.${
-        optionalMessage
-          ? `\n\nVoici une copie du message que vous avez ajouté :\n\n---\n${optionalMessage}\n---`
-          : ""
-      }\n\nMerci pour votre intérêt !\n\nL'équipe d'Entrelac IA inc.`,
+      "Confirmez votre inscription — Alerte sociofinancement (Entrelac IA inc.)",
+    crowdfundingBody: (confirmUrl: string) =>
+      `Bonjour,\n\nPour finaliser votre inscription à l'alerte de lancement de notre campagne de sociofinancement, cliquez sur le lien ci-dessous (valable pendant 48 heures) :\n\n${confirmUrl}\n\nVous pourrez retirer votre consentement en tout temps en nous écrivant à info@entrelac-ia.ca. Si vous n'êtes pas à l'origine de cette demande, ignorez simplement ce courriel : aucune inscription ne sera enregistrée.\n\nL'équipe d'Entrelac IA inc.\n204, rue du Saint-Sacrement, bureau 300, Montréal (Québec) H2Y 1W8, Canada\nhttps://www.entrelac-ia.ca`,
   },
   en: {
-    subject: "Copy of your message — Entrelac IA inc.",
-    intro: (name: string) =>
-      `Hello ${name},\n\nWe have received your message and thank you for reaching out. Here is a copy of what you sent:`,
-    outro:
-      "We will get back to you as soon as possible.\n\nThe Entrelac IA inc. Team",
+    subject: "Message received — Entrelac IA inc.",
+    body: "Hello,\n\nWe have received your message and thank you for reaching out. We will get back to you as soon as possible.\n\nThe Entrelac IA inc. Team\n204 rue du Saint-Sacrement, Suite 300, Montreal, QC H2Y 1W8, Canada",
     crowdfundingSubject:
-      "Confirmed — Crowdfunding Launch Alert (Entrelac IA inc.)",
-    crowdfundingBody: (optionalMessage: string) =>
-      `Hello,\n\nYour sign-up for our crowdfunding launch alert is confirmed. We will notify you as soon as the project opens to the public.${
-        optionalMessage
-          ? `\n\nHere is a copy of the note you included:\n\n---\n${optionalMessage}\n---`
-          : ""
-      }\n\nThank you for your interest!\n\nThe Entrelac IA inc. Team`,
+      "Confirm your sign-up — Crowdfunding Launch Alert (Entrelac IA inc.)",
+    crowdfundingBody: (confirmUrl: string) =>
+      `Hello,\n\nTo complete your sign-up for our crowdfunding launch alert, please click the link below (valid for 48 hours):\n\n${confirmUrl}\n\nYou may withdraw your consent at any time by writing to info@entrelac-ia.ca. If you did not make this request, simply ignore this email and no sign-up will be recorded.\n\nThe Entrelac IA inc. Team\n204 rue du Saint-Sacrement, Suite 300, Montreal, QC H2Y 1W8, Canada\nhttps://www.entrelac-ia.ca`,
   },
   ja: {
-    subject: "お問い合わせ内容の控え — アントラック（Entrelac IA inc.）",
-    intro: (name: string) =>
-      `${name} 様\n\nお問い合わせいただきありがとうございます。以下の内容で受け付けいたしました。`,
-    outro:
-      "内容を確認のうえ、担当者よりご連絡申し上げます。\n\nアントラック（Entrelac IA inc.）",
+    subject: "お問い合わせ受付のお知らせ — アントラック（Entrelac IA inc.）",
+    body: "お問い合わせいただきありがとうございます。\n\nメッセージは正常に受け付けいたしました。内容を確認のうえ、担当者よりご連絡申し上げます。\n\nアントラック（Entrelac IA inc.）\n204 rue du Saint-Sacrement, Suite 300, Montréal, QC H2Y 1W8, Canada",
     crowdfundingSubject:
-      "登録完了 — クラウドファンディング開始通知（Entrelac IA inc.）",
-    crowdfundingBody: (optionalMessage: string) =>
-      `ご登録ありがとうございます。\n\nクラウドファンディング開始通知へのご登録が完了いたしました。一般公開が始まり次第、改めてご案内いたします。${
-        optionalMessage
-          ? `\n\nお送りいただいたメッセージの控えは以下の通りです：\n\n---\n${optionalMessage}\n---`
-          : ""
-      }\n\n今後ともよろしくお願いいたします。\n\nアントラック（Entrelac IA inc.）`,
+      "登録確認のお願い — クラウドファンディング開始通知（Entrelac IA inc.）",
+    crowdfundingBody: (confirmUrl: string) =>
+      `ご登録のお申し込みありがとうございます。\n\nクラウドファンディング開始通知への登録を完了するには、以下のリンクをクリックしてください（有効期限：48時間）：\n\n${confirmUrl}\n\n同意はいつでも info@entrelac-ia.ca へのご連絡により撤回いただけます。お心当たりのない場合は、このメールを破棄してください（リンクをクリックしない限り登録は完了しません）。\n\nアントラック（Entrelac IA inc.）\n204 rue du Saint-Sacrement, Suite 300, Montréal, QC H2Y 1W8, Canada\nhttps://www.entrelac-ia.ca`,
   },
 };
 
+function stripLineBreaks(value: unknown): string {
+  if (typeof value !== "string") return "";
+  return value.replace(/[\r\n]+/g, " ").trim();
+}
+
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
-    const { name, email, topic, message, lang, website } = body;
+    // 1. Vérification de l'origine en production
+    if (process.env.NODE_ENV === "production") {
+      const origin = request.headers.get("origin");
+      if (!origin || !ALLOWED_ORIGINS.has(origin)) {
+        return NextResponse.json(
+          { error: "Origine non autorisée." },
+          { status: 403 }
+        );
+      }
+    }
 
-    // Champ piège anti-pourriel : si un robot le remplit, on ignore silencieusement
+    const body = await request.json();
+    const { name, email, topic, message, lang, website, formLoadedAt } = body;
+
+    // 2. Champ piège anti-pourriel : faux succès silencieux pour les robots
     if (website) {
       return NextResponse.json({ ok: true });
     }
 
-    const cleanEmail = email?.trim() || "";
-    const cleanName = name?.trim() || "";
-    const cleanMessage = message?.trim() || "";
-    const isCrowdfunding = topic === "sociofinancement";
-
-    if (!cleanEmail || !RECIPIENT_MAP[topic]) {
+    // 3. Délai minimal de 5 secondes avant l'envoi
+    if (
+      typeof formLoadedAt !== "number" ||
+      Date.now() - formLoadedAt < MIN_SUBMIT_TIME_MS
+    ) {
       return NextResponse.json(
-        { error: "Champs requis manquants." },
+        { error: "Envoi trop rapide. Veuillez réessayer dans quelques secondes." },
+        { status: 400 }
+      );
+    }
+
+    // 4. Nettoyage et validation stricte des champs
+    const cleanEmail = stripLineBreaks(email);
+    const cleanName = stripLineBreaks(name);
+    const cleanMessage = typeof message === "string" ? message.trim() : "";
+    const isCrowdfunding = topic === "sociofinancement";
+    const maxMsgLength = isCrowdfunding
+      ? MAX_CROWDFUNDING_MESSAGE_LENGTH
+      : MAX_MESSAGE_LENGTH;
+
+    if (
+      !cleanEmail ||
+      !EMAIL_REGEX.test(cleanEmail) ||
+      cleanEmail.length > MAX_EMAIL_LENGTH ||
+      typeof topic !== "string" ||
+      !RECIPIENT_MAP[topic]
+    ) {
+      return NextResponse.json(
+        { error: "Champs invalides ou manquants." },
+        { status: 400 }
+      );
+    }
+
+    if (
+      cleanName.length > MAX_NAME_LENGTH ||
+      cleanMessage.length > maxMsgLength
+    ) {
+      return NextResponse.json(
+        { error: "Un ou plusieurs champs dépassent la longueur autorisée." },
         { status: 400 }
       );
     }
@@ -118,24 +158,36 @@ export async function POST(request: Request) {
     const copy = CONFIRMATION_COPY[safeLang];
 
     if (isCrowdfunding) {
-      // 1. Envoi vers info@entrelac-ia.ca avec étiquette claire pour filtrage
-      await transporter.sendMail({
-        from: `"Site Web Entrelac IA" <info@entrelac-ia.ca>`,
-        to: target.email,
-        replyTo: cleanEmail,
-        subject: `[${target.label}] Nouvelle inscription (${cleanEmail})`,
-        text: `Inscription à l'alerte de lancement du sociofinancement\nCourriel : ${cleanEmail}\nLangue : ${safeLang.toUpperCase()}\n\nMessage facultatif :\n${cleanMessage || "(Aucun message laissé)"}`,
+      if (!process.env.CONFIRM_TOKEN_SECRET) {
+        return NextResponse.json(
+          { error: "Configuration de confirmation manquante sur le serveur." },
+          { status: 500 }
+        );
+      }
+
+      const token = createConfirmToken({
+        email: cleanEmail,
+        lang: safeLang,
+        message: cleanMessage,
       });
 
-      // 2. Confirmation envoyée à la personne inscrite
+      const baseUrl =
+        process.env.NODE_ENV === "production"
+          ? "https://www.entrelac-ia.ca"
+          : "http://localhost:3000";
+      const confirmUrl = `${baseUrl}/api/confirm?token=${encodeURIComponent(
+        token
+      )}`;
+
+      // Double confirmation : on n'avise info@entrelac-ia.ca qu'après le clic
       await transporter.sendMail({
         from: `"Entrelac IA inc." <info@entrelac-ia.ca>`,
         to: cleanEmail,
         subject: copy.crowdfundingSubject,
-        text: copy.crowdfundingBody(cleanMessage),
+        text: copy.crowdfundingBody(confirmUrl),
       });
     } else {
-      // 1. Envoi vers votre alias interne
+      // 1. Envoi interne vers votre alias
       await transporter.sendMail({
         from: `"Site Web Entrelac IA" <info@entrelac-ia.ca>`,
         to: target.email,
@@ -144,12 +196,12 @@ export async function POST(request: Request) {
         text: `Nom ou organisation : ${cleanName}\nCourriel : ${cleanEmail}\nMotif : ${target.label}\nLangue : ${safeLang.toUpperCase()}\n\nMessage :\n${cleanMessage}`,
       });
 
-      // 2. Copie de confirmation envoyée à l'expéditeur·ice
+      // 2. Accusé de réception fixe (sans recopier le nom ni le message)
       await transporter.sendMail({
         from: `"Entrelac IA inc." <info@entrelac-ia.ca>`,
         to: cleanEmail,
         subject: copy.subject,
-        text: `${copy.intro(cleanName)}\n\n---\n${cleanMessage}\n---\n\n${copy.outro}`,
+        text: copy.body,
       });
     }
 
